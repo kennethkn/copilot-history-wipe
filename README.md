@@ -28,7 +28,7 @@ A Python script that uses Selenium to automate deleting all chat history in Bing
 4. Run the script
 
     ```shell
-    python clear_bing_chats.py
+    python del_bing_chat_hist.py
     ```
 
     The script launches the Edge browser, opens the Bing chat page, and waits for you to log in to your Microsoft account. Then, it clicks the delete button on each chat to clear all history eventually.
