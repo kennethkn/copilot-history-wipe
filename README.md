@@ -1,6 +1,6 @@
-# clear-bing-chat-history
+# delete-bing-ai-copilot-chat-history
 
-A python script that uses Selenium to automate the process of clearing the chat history in Bing AI/Copilot (since Microsoft hasn't provided an official way to remove all chat history in one click...)
+A Python script that uses Selenium to automate deleting all chat history in Bing AI/Copilot (since Microsoft hasn't provided an official way to remove all chat history in one click...)
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ A python script that uses Selenium to automate the process of clearing the chat 
 
 ## Is it safe?
 
-Look at the [code](bing-clear-chats.py). Look at my [LinkedIn](https://www.linkedin.com/in/kenneth-kwan-6bb396262). I am a good guy.
+Look at the [code](del_bing_chat_hist.py). Look at my [LinkedIn](https://www.linkedin.com/in/kenneth-kwan-6bb396262). I am a good guy.
 
 ## Contributing
 
