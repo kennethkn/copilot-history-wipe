@@ -1,6 +1,6 @@
 # delete-bing-ai-copilot-chat-history
 
-A Python script that uses Selenium to automate deleting all Bing AI/Copilot chat history.
+A Python script that automates deleting Bing AI or Copilot chat history with the help of [Selenium](https://github.com/SeleniumHQ/selenium).
 
 This script was made because Microsoft hasn't provided an official way to delete all chat history in one click.
 
@@ -8,6 +8,8 @@ This script was made because Microsoft hasn't provided an official way to delete
 
 - [Python 3.x](https://www.python.org/downloads/)
   - Using brew: `brew install python`
+- [Microsoft Edge](https://www.microsoft.com/en-us/edge)
+  - Usig brew: `brew install microsoft-edge`
 - [ChromeDriver](https://chromedriver.chromium.org/downloads)
   - Using brew: `brew install chromedriver`
 
