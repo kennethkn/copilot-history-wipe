@@ -1,8 +1,8 @@
-# delete-bing-ai-copilot-chat-history
+# copilot-history-wipe
 
-A Python script that automates deleting Bing AI or Copilot chat history with the help of [Selenium](https://github.com/SeleniumHQ/selenium).
+Wipe Copilot/Bing AI chat history with Selenium automation in Python.
 
-This script was made because Microsoft hasn't provided an official way to delete all chat history in one click.
+Microsoft hasn't provided a way to clear chat history in one click, so this script does the job of clicking "Delete" repeatedly for you.
 
 ## Prerequisites
 
@@ -32,12 +32,12 @@ This script was made because Microsoft hasn't provided an official way to delete
 4. Run the script
 
     ```shell
-    python del_bing_chat_hist.py
+    python script.py
     ```
 
-    The script launches the Edge browser, opens the Bing chat page, and waits for you to log in to your Microsoft account. Then, it clicks the delete button on each chat to clear all history eventually.
+    It launches the Edge browser, opens the Bing chat page, and waits for you to log in to your Microsoft account. Then, it clicks the delete button on each chat to clear all history eventually.
 
-    Note: If you have a long chat history, the website may not display the entire history at once because the earlier chats are not recent enough to be shown. Therefore, it is recommended to reload the page after the script says "DONE" to confirm that all chat history has been cleared. You can rerun the script as needed.
+    Note: If you have a long chat history, the website may not display the entire history at once because the earlier chats are not recent enough to be shown. Therefore, it is recommended to reload the page after the script says "DONE" to confirm that all chat history has been cleared. You will be prompted to rerun the script.
 
     The script provides instructions and updates on its progress as it runs, so simply follow them.
 
@@ -50,7 +50,3 @@ Look at the [code](del_bing_chat_hist.py). Look at my [LinkedIn](https://www.lin
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
-## License
-
-[MIT License](LICENSE)
