@@ -51,8 +51,9 @@ try:
                 logging.warning(
                     "Assume 'See all recent chats' button is already clicked"
                 )
-        except:
-            raise Exception("'See all recent chats' button not found")
+        except Exception as e:
+            logging.error("'See all recent chats' button not found")
+            raise e
         cib_thread_hosts = side_panel_shadow_root.find_elements(
             By.CSS_SELECTOR, "cib-thread"
         )
@@ -69,5 +70,5 @@ except KeyboardInterrupt:
     logging.info("Quitting on keyboard interrupt...")
     driver.quit()
 except Exception as e:
-    logging.exception(e)
+    print(e)
     logging.info("Quitting on error...")
