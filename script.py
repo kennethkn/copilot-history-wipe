@@ -35,41 +35,39 @@ try:
         )
         else True
     ):
+        side_panel_shadow_root = (
+            driver.find_element(By.CSS_SELECTOR, ".cib-serp-main")
+            .shadow_root.find_element(By.CSS_SELECTOR, "cib-side-panel")
+            .shadow_root
+        )
         try:
-            side_panel_shadow_root = (
-                driver.find_element(By.CSS_SELECTOR, ".cib-serp-main")
-                .shadow_root.find_element(By.CSS_SELECTOR, "cib-side-panel")
-                .shadow_root
+            show_recent_btn = side_panel_shadow_root.find_element(
+                By.CSS_SELECTOR, ".show-recent"
             )
-            try:
-                show_recent_btn = side_panel_shadow_root.find_element(
-                    By.CSS_SELECTOR, ".show-recent"
+            if show_recent_btn.text == "See all recent chats":
+                show_recent_btn.click()
+                logging.info("Clicked 'See all recent chats' button")
+            else:
+                logging.warning(
+                    "Assume 'See all recent chats' button is already clicked"
                 )
-                if show_recent_btn.text == "See all recent chats":
-                    show_recent_btn.click()
-                    logging.info("Clicked 'See all recent chats' button")
-                else:
-                    logging.warning(
-                        "Assume 'See all recent chats' button is already clicked"
-                    )
-            except:
-                raise Exception("'See all recent chats' button not found")
-            cib_thread_hosts = side_panel_shadow_root.find_elements(
-                By.CSS_SELECTOR, "cib-thread"
+        except:
+            raise Exception("'See all recent chats' button not found")
+        cib_thread_hosts = side_panel_shadow_root.find_elements(
+            By.CSS_SELECTOR, "cib-thread"
+        )
+        count = 0
+        for th in cib_thread_hosts:
+            driver.execute_script(
+                "arguments[0].click();",
+                th.shadow_root.find_element(By.CSS_SELECTOR, ".delete.icon-button"),
             )
-            count = 0
-            for th in cib_thread_hosts:
-                driver.execute_script(
-                    "arguments[0].click();",
-                    th.shadow_root.find_element(By.CSS_SELECTOR, ".delete.icon-button"),
-                )
-                count += 1
-                logging.info(f"Deleted a chat (Total: {count})")
-        except Exception as e:
-            raise Exception(e)
+            count += 1
+            logging.info(f"Deleted a chat (Total: {count})")
         first_run = False
 except KeyboardInterrupt:
-    logging.info("\ncopilot-history-wipe: Keyboard interrupt detected. Quitting...")
+    logging.info("Quitting on keyboard interrupt...")
     driver.quit()
 except Exception as e:
-    logging.error(str(e) + ". Quitting...")
+    logging.exception(e)
+    logging.info("Quitting on error...")
