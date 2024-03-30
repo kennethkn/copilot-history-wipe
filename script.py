@@ -2,6 +2,7 @@ import logging
 import sys
 
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchWindowException
 from selenium.webdriver.common.by import By
 
 logging.basicConfig(
@@ -70,9 +71,13 @@ try:
             logging.info(f"Deleted a chat (Total: {count})")
         first_run = False
 except KeyboardInterrupt:
+    print()
     logging.info("Quitting on keyboard interrupt...")
     driver.quit()
     sys.exit(0)
+except NoSuchWindowException:
+    logging.exception("Browser window closed unexpectedly")
+    sys.exit(1)
 except Exception:
     logging.exception("Unknown error occurred")
     try:
