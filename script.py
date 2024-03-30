@@ -1,6 +1,8 @@
+import logging
+import sys
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import logging
 
 logging.basicConfig(
     format="[%(levelname)s] copilot-history-wipe: %(message)s", level=logging.INFO
@@ -51,9 +53,10 @@ try:
                 logging.warning(
                     "Assume 'See all recent chats' button is already clicked"
                 )
-        except Exception as e:
+        except:
             logging.error("'See all recent chats' button not found")
-            raise e
+            driver.quit()
+            sys.exit(1)
         cib_thread_hosts = side_panel_shadow_root.find_elements(
             By.CSS_SELECTOR, "cib-thread"
         )
@@ -69,6 +72,11 @@ try:
 except KeyboardInterrupt:
     logging.info("Quitting on keyboard interrupt...")
     driver.quit()
-except Exception as e:
-    print(e)
-    logging.info("Quitting on error...")
+    sys.exit(0)
+except Exception:
+    logging.exception("Unknown error occurred")
+    try:
+        driver.quit()
+    except:
+        pass
+    sys.exit(1)
